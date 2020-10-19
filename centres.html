@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+     <title>Ilm-Connect</title>
+     <!-- 
+
+Known Template 
+
+http://www.templatemo.com/tm-516-known
+
+-->
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ="
+          crossorigin="anonymous" />
+     <link rel="stylesheet" href="css/owl.carousel.css">
+     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="css/templatemo-style.css">
+     <link rel="stylesheet" href="css/centres.css">
+
+</head>
+
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+     <!-- PRE LOADER -->
+     <section class="preloader">
+          <div class="spinner">
+
+               <span class="spinner-rotate"></span>
+
+          </div>
+     </section>
+
+
+     <!-- MENU -->
+     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+          <div class="container">
+
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+
+                    <!-- lOGO TEXT HERE -->
+                    <a href="index.html" class="navbar-brand">Ilm-connect</a>
+               </div>
+
+               <!-- MENU LINKS -->
+               <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-nav-first">
+                         <li><a href="index.html" class="smoothScroll">Home</a></li>
+                         <li class="active"><a href="centres.html" class="smoothScroll">Centres</a></li>
+                    </ul>
+
+               </div>
+
+          </div>
+     </section>
+
+
+
+
+
+     <!-- TEAM -->
+     <section id="vue-app">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-12 col-sm-12">
+                         <div class="section-title">
+                              <h2>Quran Centres and Arabic Centres<small>see the Islamic Centres</small></h2>
+                         </div>                         
+                            <!-- Split button -->
+                         <div class="btn-group">
+                              <button type="button" class="btn btn-success" style="background-color: #29ca8e"style="text-transform: capitalize">Location Area: {{ areaFilter }}</button>
+                              <button type="button" class="btn btn-info dropdown-toggle" style="background-color: #29ca8e" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <span class="caret"></span>
+                              <span class="sr-only">Toggle Dropdown</span>
+                              </button>
+                              <ul class="dropdown-menu">
+                              <li><a v-on:click="setAreaFilter('all')">All</a></li>
+                              <li><a v-on:click="setAreaFilter('North')">North</a></li>
+                              <li><a v-on:click="setAreaFilter('South')">South</a></li>
+                              <li><a v-on:click="setAreaFilter('East')">East</a></li>
+                              <li><a v-on:click="setAreaFilter('West')">West</a></li>
+                              <li><a v-on:click="setAreaFilter('Central')">Central</a></li>
+                              
+                              </ul>
+                         </div>
+
+                         <div class="btn-group">
+                                   <button type="button" class="btn btn-success" style="text-transform: capitalize">Subjects: {{ subjectFilter }}</button>
+                                   <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   <span class="caret"></span>
+                                   <span class="sr-only">Toggle Dropdown</span>
+                                   </button>
+                                   <ul class="dropdown-menu">
+                                   <li><a v-on:click="setSubjectFilter('Arabic Language')">Arabic Language</a></li>
+                                   <li><a v-on:click="setSubjectFilter('Quran')">Quran</a></li>
+                                   <li><a v-on:click="setSubjectFilter('Tafseer')">Tafseer</a></li>
+                                   <li><a v-on:click="setSubjectFilter('Islamic Studies')">Islamic Studies</a></li>
+                                   
+                                   
+                                   </ul>
+                              </div>
+                    </div>
+                   
+                    
+                    <div v-for="centre in filteredCentres" class="col-md-3 col-sm-6  container-fluid" @click="toggleShowModal(centre)">
+                         <div class="team-thumb centre-card">
+                              <div class="team-image">
+                                   <img v-bind:src="'images/' + centre.image" class="img-responsive card-image" alt="">
+                              </div>
+                              <div class="team-info">
+                                   <h3>{{centre.name}}</h3>
+                                   <span>{{centre.description}}</span>
+                              </div>
+                         </div>
+                    </div>
+
+                    
+                    <h3 v-if="filteredCentres.length === 0" class="text-center" >No Centres Available</h3>
+
+                    <div id="centre-modal" class="modal" v-bind:class="{show: showModal}">
+                         <!-- Modal content -->
+                         <div class="modal-content">
+                              <span class="close" @click="toggleShowModal()">&times;</span>
+                              <h3 modalname>{{selectedCentre.name}}</h3>
+                               <br>
+                              <img v-bind:src="'images/' + selectedCentre.image" class="img-responsive card-image" alt="">
+                              <br>
+                              <p class="lead modaldesc">{{selectedCentre.desc}}</p>
+                              <br>
+                              <p><a class="btn btn-info btn-lg centrewebbtn" v-bind:href="selectedCentre.website" target="_blank" style="background-color: #29ca8e"role="button">Learn more</a></p>
+
+                         </div>
+                    </div>
+               </div>
+     </section>
+
+
+     <!-- SCRIPTS -->
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+     <script src="js/vue.js"></script>
+     <script src="js/jquery.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/owl.carousel.min.js"></script>
+     <script src="js/smoothscroll.js"></script>
+     <script src="js/custom.js"></script>
+
+</body>
+
+</html>
