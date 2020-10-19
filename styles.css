@@ -1,10 +1,13 @@
-.textbox {
-width: 10px;
-}
+
+
 .doneTask {
     text-decoration: line-through;
     text-decoration-color: red;
 }
 i {
     cursor: pointer;
+}
+h1 {
+    color: antiquewhite;
+    font-family: cursive;
 }
