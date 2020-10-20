@@ -17,6 +17,7 @@
   <style>
     body {
       background-color: #3C5674;
+      background-image: url("turquoise.jpeg");
     background-size: cover;
     }
   </style>
@@ -29,7 +30,7 @@
                     <input type="text" class="form-control" placeholder="What should I do today??" v-model="newToDoName" v-on:keyup.enter="addToDo" >
                     <div class="input-group-append">
                      
-                        <button class="btn btn-light" type="button" id="button-addon2" v-on:click="addToDo" >Add it!</button>
+                        <button class="btn btn-dark" type="button" id="button-addon2" v-on:click="addToDo" >Add it!</button>
                         
                     </div>
                   </div>
