@@ -16,8 +16,7 @@
   </head>
   <style>
     body {
-      background-color: black;
-      background-image: url("leafs1.jpeg");
+      background-color: #3C5674;
     background-size: cover;
     }
   </style>
@@ -27,7 +26,7 @@
             <h1 class="text-center mt-5 mb-5">What to do? </h1>
 
             <div class="input-group mb-3 input-group-lg">
-                    <input type="text" class="form-control"  placeholder="What should I do today??" v-model="newToDoName" v-on:keyup.enter="addToDo" >
+                    <input type="text" class="form-control" placeholder="What should I do today??" v-model="newToDoName" v-on:keyup.enter="addToDo" >
                     <div class="input-group-append">
                      
                         <button class="btn btn-light" type="button" id="button-addon2" v-on:click="addToDo" >Add it!</button>
